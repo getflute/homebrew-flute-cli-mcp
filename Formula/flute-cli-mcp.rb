@@ -1,26 +1,22 @@
 class FluteCliMcp < Formula
   desc "MCP server that drives the flute payments CLI"
   homepage "https://github.com/getflute/flute-cli-mcp"
-  version "0.2.0"
-  if OS.mac?
-    if Hardware::CPU.arm?
-      url "https://github.com/getflute/flute-cli-mcp/releases/download/v0.2.0/flute-cli-mcp-aarch64-apple-darwin.tar.xz"
-      sha256 "2ee92533117a164849c4d32e86ade7018fa15508eb61db9f59c397a7cb93d982"
-    end
+  version "0.2.1"
+  if OS.mac? && Hardware::CPU.arm?
+    url "https://github.com/getflute/flute-cli-mcp/releases/download/v0.2.1/flute-cli-mcp-aarch64-apple-darwin.tar.xz"
+    sha256 "644cded26af537c91a7231ab73b1d89e94781b6864fe9f1964ca695e3152a045"
   end
-  if OS.linux?
-    if Hardware::CPU.intel?
-      url "https://github.com/getflute/flute-cli-mcp/releases/download/v0.2.0/flute-cli-mcp-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "9c8d4068323c80a8ff6db35cf28210b30e4be54b4786a4a0db5cf8c05d10932d"
-    end
+  if OS.linux? && Hardware::CPU.intel?
+    url "https://github.com/getflute/flute-cli-mcp/releases/download/v0.2.1/flute-cli-mcp-x86_64-unknown-linux-gnu.tar.xz"
+    sha256 "b56777a1779a04ad294e1554d5e4ac2f1d08428d3f5d187ef6ab5648b7ad4738"
   end
   license "MIT"
 
   BINARY_ALIASES = {
-    "aarch64-apple-darwin": {},
-    "x86_64-pc-windows-gnu": {},
-    "x86_64-unknown-linux-gnu": {}
-  }
+    "aarch64-apple-darwin":     {},
+    "x86_64-pc-windows-gnu":    {},
+    "x86_64-unknown-linux-gnu": {},
+  }.freeze
 
   def target_triple
     cpu = Hardware::CPU.arm? ? "aarch64" : "x86_64"
@@ -38,12 +34,8 @@ class FluteCliMcp < Formula
   end
 
   def install
-    if OS.mac? && Hardware::CPU.arm?
-      bin.install "flute-cli-mcp"
-    end
-    if OS.linux? && Hardware::CPU.intel?
-      bin.install "flute-cli-mcp"
-    end
+    bin.install "flute-cli-mcp" if OS.mac? && Hardware::CPU.arm?
+    bin.install "flute-cli-mcp" if OS.linux? && Hardware::CPU.intel?
 
     install_binary_aliases!
 
