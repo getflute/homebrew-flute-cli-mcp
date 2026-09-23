@@ -1,14 +1,14 @@
 class FluteCliMcp < Formula
   desc "MCP server that drives the flute payments CLI"
   homepage "https://github.com/getflute/flute-cli-mcp"
-  version "1.0.0"
+  version "1.0.1"
   if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/getflute/flute-cli-mcp/releases/download/v1.0.0/flute-cli-mcp-aarch64-apple-darwin.tar.xz"
-    sha256 "21f5f8a1b89d8fe0a2dfd2dc85d1a7094f0c4b2ce3ba6540f598d96d967626f6"
+    url "https://github.com/getflute/flute-cli-mcp/releases/download/v1.0.1/flute-cli-mcp-aarch64-apple-darwin.tar.xz"
+    sha256 "4162b0f2aef6d0f5169c5fa25ccb3fea1869aa3d1eae045b966ab27992801268"
   end
   if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/getflute/flute-cli-mcp/releases/download/v1.0.0/flute-cli-mcp-x86_64-unknown-linux-gnu.tar.xz"
-    sha256 "448773114a67b556143bfcbffa052d78d84db1006cca90c323899750be052ed1"
+    url "https://github.com/getflute/flute-cli-mcp/releases/download/v1.0.1/flute-cli-mcp-x86_64-unknown-linux-gnu.tar.xz"
+    sha256 "9315c50ed8774f31b7c8ad37fe89d4b4d4b80d1a0f768e064107c3c0e7bb9f8e"
   end
   license "MIT"
 
